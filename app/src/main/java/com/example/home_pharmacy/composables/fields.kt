@@ -24,3 +24,20 @@ fun InputField(modifier: Modifier = Modifier,label: String) {
         singleLine = true
         )
 }
+
+@Composable
+fun MultilineInputField(modifier: Modifier = Modifier,label: String) {
+    var text by remember {
+        mutableStateOf("")
+    }
+    OutlinedTextField(
+        value = text,
+        onValueChange = { text = it },
+        modifier = modifier.padding(
+            10.dp
+        ).fillMaxWidth(1f),
+        label = { Text(text = label)},
+        placeholder = { Text(text = "Ввести $label")},
+        singleLine = false
+    )
+}

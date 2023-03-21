@@ -2,29 +2,23 @@ package com.example.home_pharmacy.composables.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Switch
-import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.home_pharmacy.R
 import com.example.home_pharmacy.composables.FilledButton
 import com.example.home_pharmacy.composables.InputField
 
 @Composable
-fun RegistrationScreen(modifier: Modifier = Modifier){
-    var isChecked by remember {
-        mutableStateOf(false)
-    }
+fun RegistrationScreen(modifier: Modifier = Modifier, navigateToMedicineScreen: ()->Unit){
+//    var isChecked by remember {
+//        mutableStateOf(false)
+//    }
     Column(modifier = modifier
         .background(Color.White)
         .fillMaxSize()) {
@@ -39,7 +33,7 @@ fun RegistrationScreen(modifier: Modifier = Modifier){
 //                Text(text = "Разрешает автоматически синхронизировать записи, если есть доступ в Интернет (можно отключить в меню настроек)",modifier = modifier.padding(end = 10.dp), Color(129,140,153), fontSize = 13.sp)
 //            }
 //        }
-        FilledButton(modifier = Modifier.padding(top = 200.dp), text = "Зарегистрироваться", {})
+        FilledButton(modifier = Modifier.padding(top = 200.dp), text = "Зарегистрироваться", onClick = { navigateToMedicineScreen() })
 
     }
 }

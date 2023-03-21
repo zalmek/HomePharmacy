@@ -1,7 +1,6 @@
 package com.example.home_pharmacy.composables.screens
 
 
-import com.example.home_pharmacy.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,24 +20,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.home_pharmacy.R
 import com.example.home_pharmacy.composables.BackgroundlessButton
 import com.example.home_pharmacy.composables.FilledButton
 import com.example.home_pharmacy.composables.InputField
 
-@Preview
 @Composable
-fun MainScreen() {
-    var regIsClicked by remember {
-        mutableStateOf(false)
-    }
-    if (regIsClicked){
-        RegistrationScreen()
-    }
-    else {
+fun MainScreen(modifier: Modifier = Modifier, navigateToRegistration: ()->Unit) {
         Column(modifier = Modifier
             .background(Color.White)
             .fillMaxSize()) {
-            Text(text = "Моя аптека", modifier = Modifier.align(CenterHorizontally).padding(top = 50.dp), fontFamily = FontFamily(Font(R.font.pacifico_regular)), fontSize = 40.sp, color = Color(android.graphics.Color.parseColor("#2688EB")))
+            Text(text = "Моя аптека", modifier = Modifier
+                .align(CenterHorizontally)
+                .padding(top = 50.dp), fontFamily = FontFamily(Font(R.font.pacifico_regular)), fontSize = 40.sp, color = Color(android.graphics.Color.parseColor("#2688EB")))
             var openDialog by remember {
                 mutableStateOf(false)
             }
@@ -65,15 +59,14 @@ fun MainScreen() {
             }
             InputField(modifier = Modifier.padding(top = 100.dp), label = "Логин")
             InputField(label = "Пароль")
-            FilledButton(modifier = Modifier, text = "Войти", {})
+            FilledButton(modifier = Modifier, text = "Войти", {},)
             BackgroundlessButton(
                 modifier = Modifier,
                 text = "Зарегестрироваться"
-            ) { regIsClicked=true }
+            ) { navigateToRegistration() }
             BackgroundlessButton(
                 modifier = Modifier.padding(top = 200.dp),
                 text = "Продолжить без регистрации",
                 onClick = { openDialog = true })
         }
     }
-}

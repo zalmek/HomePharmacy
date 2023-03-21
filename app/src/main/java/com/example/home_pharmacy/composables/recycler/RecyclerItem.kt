@@ -1,28 +1,26 @@
-package com.example.myapplication.composables.Recycler
+package com.example.home_pharmacy.composables.recycler
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.myapplication.Logic.ImageProvider
+import com.example.home_pharmacy.composables.FilledButton
+import com.example.home_pharmacy.db.Medicine
 
-//@Composable
-//fun RecyclerItem(modifier: Modifier = Modifier) {
-//    Column {
-//        Image(
-//            bitmap = ImageProvider.Provider.provideImageD(),
-//            contentDescription = ImageProvider.Provider.provideImageContentD(),
-//            modifier = modifier
-//                .padding(10.dp)
-//                .height(400.dp)
-//                .width(300.dp)
-//        )
-//        Text(text = )
-//        Text(text = )
-//    }
-//}
+@Composable
+fun RecyclerItem(modifier: Modifier = Modifier, medicine: Medicine, ) {
+    Column {
+        Text(text = medicine.type)
+        Text(text = medicine.name)
+        Text(text = "Срок годности: ${medicine.expires}")
+
+        val list = medicine.tags.split(",")
+        Row() {
+            list.forEach {
+                FilledButton(text = it, color = TODO(), onClick = { println() })
+
+            }
+        }
+    }
+}
