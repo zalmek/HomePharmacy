@@ -1,11 +1,11 @@
 package com.example.home_pharmacy.logic
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.home_pharmacy.db.Medicine
 import com.example.home_pharmacy.db.MedicineRoomDatabase
+import com.example.home_pharmacy.db.User
 
 
 class MedicineViewModel(application: Application): ViewModel() {
@@ -29,6 +29,14 @@ class MedicineViewModel(application: Application): ViewModel() {
     fun addMedicine(employee: Medicine) {
         medicineRepository.addMedicine(employee)
         getAllMedicines()
+    }
+    fun addUser(user: User) {
+        medicineRepository.addUser(user)
+        getAllUsers()
+    }
+
+    fun getAllUsers() {
+        medicineRepository.getAllUsers()
     }
 
     fun updateMedicineDetails(employee: Medicine) {

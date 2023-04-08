@@ -3,6 +3,7 @@ package com.example.home_pharmacy.logic
 import androidx.lifecycle.MutableLiveData
 import com.example.home_pharmacy.db.Medicine
 import com.example.home_pharmacy.db.MedicineDao
+import com.example.home_pharmacy.db.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,6 +19,11 @@ class MedicineRepository(private val medicineDao: MedicineDao) {
             medicineDao.getAllMedicine()
         }
     }
+    fun getAllUsers(){
+        coroutineScope.launch(Dispatchers.IO){
+            medicineDao.getAllUsers()
+        }
+    }
 
     fun addMedicine(newMedicine: Medicine) {
         coroutineScope.launch(Dispatchers.IO) {
@@ -28,6 +34,12 @@ class MedicineRepository(private val medicineDao: MedicineDao) {
     fun updateMedicineDetails(newMedicine: Medicine) {
         coroutineScope.launch(Dispatchers.IO) {
             medicineDao.updateMedicineDetails(newMedicine)
+        }
+    }
+
+    fun addUser(user: User){
+        coroutineScope.launch(Dispatchers.IO) {
+            medicineDao.addUser(user)
         }
     }
 }

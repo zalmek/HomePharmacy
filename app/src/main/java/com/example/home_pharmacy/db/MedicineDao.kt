@@ -7,6 +7,12 @@ interface MedicineDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addMedicine(medicine: Medicine)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addUser(user: User)
+
+    @Query("SELECT * FROM users")
+    fun getAllUsers(): List<User>
+
     @Query("SELECT * FROM medicines WHERE uuid = :medicineId")
     fun findMedicineById(medicineId: String): Medicine
 

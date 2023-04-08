@@ -4,18 +4,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InputField(modifier: Modifier = Modifier,label: String) {
-    var text by remember {
-        mutableStateOf("")
-    }
+fun InputField(modifier: Modifier = Modifier,label: String, text: String = "", onValueChange : (String) -> Unit) {
     OutlinedTextField(
         value = text,
-        onValueChange = { text = it },
+        onValueChange = onValueChange,
         modifier = modifier.padding(
             10.dp
         ).fillMaxWidth(1f),
@@ -26,13 +23,10 @@ fun InputField(modifier: Modifier = Modifier,label: String) {
 }
 
 @Composable
-fun MultilineInputField(modifier: Modifier = Modifier,label: String) {
-    var text by remember {
-        mutableStateOf("")
-    }
+fun MultilineInputField(modifier: Modifier = Modifier,label: String, text: String = "", onValueChange : (String) -> Unit) {
     OutlinedTextField(
         value = text,
-        onValueChange = { text = it },
+        onValueChange = onValueChange ,
         modifier = modifier.padding(
             10.dp
         ).fillMaxWidth(1f),
